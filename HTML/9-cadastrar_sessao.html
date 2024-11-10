@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoria Pro</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="alerts">
+            <div class="alert alert-success">gg</div>
+            <div class="alert alert-danger">ee</div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="container">
+            <h1>Monitoria Pro</h1>
+        </div>
+
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="3-cadastrar_escola.html">Escola</a>
+            <a href="4-cadastrar_curso.html">Curso</a>
+            <a href="5-cadastrar_disciplina.html">Disciplina</a>
+            <a href="6-cadastrar_orientador.html">Orientador</a>
+            <a href="10-cadastrar_estudante.html">Estudante</a>
+            <a href="8-cadastrar_monitor.html">Monitor</a>
+            <a href="7-cadastrar_projeto.html">Projeto</a>
+            <a href="9-cadastrar_sessao.html">Sessão</a>
+        </div>
+    </div>
+
+    <nav class="breadcrumb">
+        <a href="#">Home</a> &gt; 
+        <a href="#">Sessao</a>
+    </nav>
+
+    <h2 class="titulo-cadastrar">Sessão</h2>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="escolas-title">Sessões ( <span id="total"></span> )</h3> 
+                <button class="btn btn-primary" id="cadastrar"><i class="fa-solid fa-plus"></i>Cadastrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Data da sessão</th>
+                        <th>Horário de ínicio</th>
+                        <th>Horário de fim</th>
+                        <th>Local da sessão</th>
+                        <th>Descrição</th>
+                        <th>Id Monitor</th>
+                        <th>Id Projeto</th>
+                        <th>Alterar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="create-student">
+        <div class="modal-body">
+        
+            <h3>Cadastrar Sessão</h3>
+            <form action="">
+                <div class="form-group">
+                    <label for="data_sesao">Data da Sessão:</label>
+                    <input type="date" name="data_sesao" id="data_sesao" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="horario_inicio_sessao">Horário Início Sessão:</label>
+                    <input type="time" name="horario_inicio_sessao" id="horario_inicio_sessao" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="horario_fim_sessao">Horário Fim Sessão:</label>
+                    <input type="time" name="horario_fim_sessao" id="horario_fim_sessao" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="local_sessao">Local da Sessão:</label>
+                    <input type="text" name="local_sessao" id="local_sessao" placeholder="Ex: Sala 101" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="descricao_sessao">Descrição da Sessão:</label>
+                    <textarea name="descricao_sessao" id="descricao_sessao" placeholder="Descrição detalhada da sessão" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="id_monitor">ID do Monitor:</label>
+                    <input type="text" name="id_monitor" id="id_monitor" placeholder="Ex: 1" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="id_projeto">ID do Projeto:</label>
+                    <input type="text" name="id_projeto" id="id_projeto" placeholder="Ex: 2" class="form-control">
+                </div>
+                <div class="form-group buttons">
+                    <button class="btn btn-success" type="submit" id ="save"><i class="fa-solid fa-floppy-disk"></i>Salvar</button>
+                    <button class="btn btn-danger" type="submit" id="close"><i class="fa-solid fa-xmark"></i>Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="update-student">
+        <div class="modal-body">
+                <h3>Cadastrar Projeto</h3>
+            <form action="">
+                <div class="form-group">
+                    <label for="edit_data_sesao">Data da Sessão:</label>
+                    <input type="date" name="edit_data_sesao" id="edit_data_sesao" class="form-control">
+                    <input type="text" name="edit_id_sessoes" id="edit_id_sessoes" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_horario_inicio_sessao">Horário Início Sessão:</label>
+                    <input type="time" name="edit_horario_inicio_sessao" id="edit_horario_inicio_sessao" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_horario_fim_sessao">Horário Fim Sessão:</label>
+                    <input type="time" name="edit_horario_fim_sessao" id="edit_horario_fim_sessao" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_local_sessao">Local da Sessão:</label>
+                    <input type="text" name="edit_local_sessao" id="edit_local_sessao" placeholder="Ex: Sala 101" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_descricao_sessao">Descrição da Sessão:</label>
+                    <textarea name="edit_descricao_sessao" id="edit_descricao_sessao" placeholder="Descrição detalhada da sessão" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="edit_id_monitor">ID do Monitor:</label>
+                    <input type="text" name="edit_id_monitor" id="edit_id_monitor" placeholder="Ex: 1" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_id_projeto">ID do Projeto:</label>
+                    <input type="text" name="edit_id_projeto" id="edit_id_projeto" placeholder="Ex: 2" class="form-control">
+                </div>
+                <div class="form-group buttons">
+                    <button class="btn btn-success" type="submit" id="update"><i class="fa-solid fa-pen-to-square"></i>Alterar</button>
+                    <button class="btn btn-danger" type="submit" id="update_close"><i class="fa-solid fa-xmark"></i>Fechar</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <script src="Js/sessao.js"></script>
+</body>
+</html>

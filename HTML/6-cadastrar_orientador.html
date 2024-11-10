@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoria Pro</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="alerts">
+            <div class="alert alert-success">gg</div>
+            <div class="alert alert-danger">ee</div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="container">
+            <h1>Monitoria Pro</h1>
+        </div>
+
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="3-cadastrar_escola.html">Escola</a>
+            <a href="4-cadastrar_curso.html">Curso</a>
+            <a href="5-cadastrar_disciplina.html">Disciplina</a>
+            <a href="6-cadastrar_orientador.html">Orientador</a>
+            <a href="10-cadastrar_estudante.html">Estudante</a>
+            <a href="8-cadastrar_monitor.html">Monitor</a>
+            <a href="7-cadastrar_projeto.html">Projeto</a>
+            <a href="9-cadastrar_sessao.html">Sessão</a>
+        </div>
+    </div>
+
+    <nav class="breadcrumb">
+        <a href="#">Home</a> &gt; 
+        <a href="#">Orientador</a>
+    </nav>
+
+    <h2 class="titulo-cadastrar">Cadastrar Orientador</h2>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="escolas-title">Orientadores ( <span id="total"></span> )</h3> 
+                <button class="btn btn-primary" id="cadastrar"><i class="fa-solid fa-plus"></i>Cadastrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Senha</th>
+                        <th>Alterar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal" id="create-student">
+        <div class="modal-body">
+            <h3>Cadastrar Orientador</h3>
+            <form action="">
+                <div class="form-group">
+                    <label for="nome_orientador">Nome do orientador:</label>
+                    <input type="text" name="nome_orientador" id="nome_orientador" placeholder="Ex: José Airton Senna" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email_orientador">Email:</label>
+                    <input type="text" name="email_orientador" id="email_orientador" placeholder="Ex: jose.senna@monitoria.pro" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="senha_orientador">Senha:</label>
+                    <input type="text" name="senha_orientador" id="senha_orientador" placeholder="Ex: monitoria123 " class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="telefone_orientador">Telefone:</label>
+                    <input type="tel" name="telefone_orientador" id="telefone_orientador" placeholder="Ex: 41 912345678 " class="form-control">
+                </div>
+                <div class="form-group buttons">
+                    <button class="btn btn-success" type="submit" id ="save"><i class="fa-solid fa-floppy-disk"></i>Salvar</button>
+                    <button class="btn btn-danger" type="submit" id="close"><i class="fa-solid fa-xmark"></i>Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="update-student">
+        <div class="modal-body">
+            <h3>Alterar Orientador</h3>
+            <form action="">
+                <div class="form-group">
+                    <label for="edit_nome_orientador">Nome do orientador:</label>
+                    <input type="text" name="edit_nome_orientador" id="edit_nome_orientador" placeholder="Ex: José Airton Senna" class="form-control">
+                    <input type="text" name="edit_id_orientador" id="edit_id_orientador" placeholder="Ex: José Airton Senna" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_email_orientador">Email:</label>
+                    <input type="text" name="edit_email_orientador" id="edit_email_orientador" placeholder="Ex: jose.senna@monitoria.pro" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_senha_orientador">Senha:</label>
+                    <input type="tel" name="edit_senha_orientador" id="edit_senha_orientador" placeholder="Ex: 41 912345678 " class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_telefone_orientador">Telefone:</label>
+                    <input type="text" name="edit_telefone_orientador" id="edit_telefone_orientador" placeholder="Ex: 41 912345678 " class="form-control">
+                </div>
+                <div class="form-group buttons">
+                    <button class="btn btn-success" type="submit" id="update"><i class="fa-solid fa-pen-to-square"></i>Alterar</button>
+                    <button class="btn btn-danger" type="submit" id="update_close"><i class="fa-solid fa-xmark"></i>Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="Js/orientador.js"></script>
+</body>
+</html>

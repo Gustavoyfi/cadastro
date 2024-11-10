@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoria Pro</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="alerts">
+            <div class="alert alert-success">gg</div>
+            <div class="alert alert-danger">ee</div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="container">
+            <h1>Monitoria Pro</h1>
+        </div>
+
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="3-cadastrar_escola.html">Escola</a>
+            <a href="4-cadastrar_curso.html">Curso</a>
+            <a href="5-cadastrar_disciplina.html">Disciplina</a>
+            <a href="6-cadastrar_orientador.html">Orientador</a>
+            <a href="10-cadastrar_estudante.html">Estudante</a>
+            <a href="8-cadastrar_monitor.html">Monitor</a>
+            <a href="7-cadastrar_projeto.html">Projeto</a>
+            <a href="9-cadastrar_sessao.html">Sessão</a>
+        </div>
+    </div>
+
+    <nav class="breadcrumb">
+        <a href="#">Home</a> &gt; 
+        <a href="#">Disciplina</a>
+    </nav>
+
+    <h2 class="titulo-cadastrar">Cadastrar Disciplina</h2>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="escolas-title">Disciplina ( <span id="total"></span> )</h3> 
+                <button class="btn btn-primary" id="cadastrar"><i class="fa-solid fa-plus"></i>Cadastrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Carga horária</th>
+                        <th>Ementa</th>
+                        <th>Id curso</th>
+                        <th>Alterar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="create-student">
+        <div class="modal-body">
+            <h3>Cadastrar Disciplina</h3>
+            <form action="">
+                <div class="form-group">
+                    <label for="nome_disciplina">Nome da disciplina:</label>
+                    <input type="text" name="nome_disciplina" id="nome_disciplina" placeholder="Ex: Modelagem de processo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="carga_horaria_disciplina">Carga horária:</label>
+                    <input type="text" name="carga_horaria_disciplina" id="carga_horaria_disciplina" placeholder="Ex: 80" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="ementa_disciplina">Ementa disciplina:</label>
+                    <input type="text" name="ementa_disciplina" id="ementa_disciplina" placeholder="Ex: Essa disciplina contém.." class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="id_curso">Id Curso:</label>
+                    <input type="text" name="id_curso" id="id_curso" placeholder="Ex: Essa disciplina contém.." class="form-control">
+                </div>
+                <div class="form-group buttons">
+                    <button class="btn btn-success" type="submit" id ="save"><i class="fa-solid fa-floppy-disk"></i>Salvar</button>
+                    <button class="btn btn-danger" type="submit" id="close"><i class="fa-solid fa-xmark"></i>Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="update-student">
+        <div class="modal-body">
+            <h3>Alterar Disciplina</h3>
+                <div class="form-group">
+                    <label for="edit_nome_disciplina">Nome da disciplina:</label>
+                    <input type="text" name="edit_nome_disciplina" id="edit_nome_disciplina" placeholder="Ex: Modelagem de processo" class="form-control">
+                    <input type="text" name="edit_id_disciplina" id="edit_id_disciplina" placeholder="Ex: Modelagem de processo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_carga_horaria_disciplina">Carga horária:</label>
+                    <input type="text" name="edit_carga_horaria_disciplina" id="edit_carga_horaria_disciplina" placeholder="Ex: 80" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_ementa_disciplina">Ementa disciplina:</label>
+                    <input type="text" name="edit_ementa_disciplina" id="edit_ementa_disciplina" placeholder="Ex: Essa disciplina contém.." class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="edit_id_curso">Id Curso:</label>
+                    <input type="text" name="edit_id_curso" id="edit_id_curso" placeholder="Ex: Essa disciplina contém.." class="form-control">
+                </div>
+                <div class="form-group buttons">
+                    <button class="btn btn-success" type="submit" id="update"><i class="fa-solid fa-pen-to-square"></i>Alterar</button>
+                    <button class="btn btn-danger" type="submit" id="update_close"><i class="fa-solid fa-xmark"></i>Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="Js/disciplina.js"></script>
+</body>
+</html>

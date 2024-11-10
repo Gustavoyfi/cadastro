@@ -1,0 +1,167 @@
+CREATE DATABASE IF NOT EXISTS monitoria_pro;
+USE monitoria_pro;
+
+CREATE TABLE escola_campus (
+    id_escola_campus INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    local_escola VARCHAR(255) NOT NULL,
+    bloco VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE curso (
+    id_curso INT AUTO_INCREMENT PRIMARY KEY,
+    nome_curso VARCHAR(255) NOT NULL,
+    duracao_curso INT NOT NULL,
+    carga_horaria_total INT NOT NULL,
+    id_escola_campus INT,
+    FOREIGN KEY (id_escola_campus) REFERENCES escola_campus(id_escola_campus)
+);
+
+CREATE TABLE disciplina (
+    id_disciplina INT AUTO_INCREMENT PRIMARY KEY,
+    nome_disciplina VARCHAR(255) NOT NULL,
+    carga_horaria_disciplina INT NOT NULL,
+    ementa_disciplina TEXT NOT NULL,
+    id_curso INT,
+    FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
+);
+
+CREATE TABLE orientador (
+    id_orientador INT AUTO_INCREMENT PRIMARY KEY,
+    nome_orientador VARCHAR(255) NOT NULL,
+    email_orientador VARCHAR(255) NOT NULL UNIQUE,
+    telefone_orientador VARCHAR(20),
+);
+
+CREATE TABLE projeto (
+    id_projeto INT AUTO_INCREMENT PRIMARY KEY,
+    id_escola_campus INT,
+    id_disciplina INT,
+    data_inicio_projeto DATE,
+    status_monitor ENUM('Novo', 'Reduzido') NOT NULL,
+    forma_atendimento VARCHAR(50),
+    horas_aula INT,
+    horas_extraclasse INT,
+    modalidade VARCHAR(50),
+    horas_bolsa INT,
+    horas_voluntario INT,
+    valor_bolsa DECIMAL(10, 2),
+    FOREIGN KEY (id_escola_campus) REFERENCES escola_campus(id_escola_campus),
+    FOREIGN KEY (id_disciplina) REFERENCES disciplina(id_disciplina),
+);
+
+CREATE TABLE monitor (
+    id_monitor INT AUTO_INCREMENT PRIMARY KEY,
+    id_curso INT,
+    id_disciplina INT,
+    id_projeto INT,
+    nome_monitor VARCHAR(255) NOT NULL,
+    periodo_monitor VARCHAR(50),
+    email_monitor VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_curso) REFERENCES curso(id_curso),
+    FOREIGN KEY (id_disciplina) REFERENCES disciplina(id_disciplina),
+    FOREIGN KEY (id_projeto) REFERENCES projeto(id_projeto)
+);
+
+CREATE TABLE estudante (
+    id_estudante INT AUTO_INCREMENT PRIMARY KEY,
+    id_disciplina INT,
+    id_curso INT,
+    nome_estudante VARCHAR(255) NOT NULL,
+    email_estudante VARCHAR(255) NOT NULL UNIQUE,
+    periodo_estudante VARCHAR(50),
+    turma_estudante VARCHAR(50),
+    FOREIGN KEY (id_disciplina) REFERENCES disciplina(id_disciplina),
+    FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
+);
+
+CREATE TABLE sessao (
+    id_sessoes INT AUTO_INCREMENT PRIMARY KEY,
+    id_monitor INT,
+    id_projeto INT,
+    data_sesao DATE,
+    horario_inicio_sessao TIME NOT NULL,
+    horario_fim_sessao TIME NOT NULL,
+    local_sessao VARCHAR(255) NOT NULL,
+    descricao_sessao TEXT,
+    FOREIGN KEY (id_projeto) REFERENCES projeto(id_projeto),
+    FOREIGN KEY (id_monitor) REFERENCES monitor(id_monitor) 
+);
+
+CREATE TABLE diario_bordo (
+    id_diario_bordo INT AUTO_INCREMENT PRIMARY KEY,
+    id_monitor INT,
+    id_disciplina INT,
+    id_curso INT,
+    nome_atividades VARCHAR(255),
+    como_realizou TEXT,
+    data DATE NOT NULL,
+    reflexao_critica TEXT,
+    FOREIGN KEY (id_monitor) REFERENCES monitor(id_monitor),
+    FOREIGN KEY (id_disciplina) REFERENCES disciplina(id_disciplina),
+    FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
+);
+
+CREATE TABLE monitor_sessao (
+    id_monitor INT,
+    id_sessoes INT,
+    PRIMARY KEY (id_monitor, id_sessoes),
+    FOREIGN KEY (id_monitor) REFERENCES monitor(id_monitor),
+    FOREIGN KEY (id_sessoes) REFERENCES sessao(id_sessoes)
+);
+
+CREATE TABLE estudante_sessao (
+    id_estudante INT,
+    id_sessoes INT,
+    PRIMARY KEY (id_estudante, id_sessoes),
+    FOREIGN KEY (id_estudante) REFERENCES estudante(id_estudante),
+    FOREIGN KEY (id_sessoes) REFERENCES sessao(id_sessoes)
+);
+
+CREATE TABLE orientador_projeto (
+    id_orientador INT,
+    id_projeto INT,
+    PRIMARY KEY (id_orientador, id_projeto),
+    FOREIGN KEY (id_orientador) REFERENCES orientador(id_orientador),
+    FOREIGN KEY (id_projeto) REFERENCES projeto(id_projeto)
+);
+
+CREATE TABLE projeto_monitor (
+    id_projeto INT,
+    id_monitor INT,
+    PRIMARY KEY (id_projeto, id_monitor),
+    FOREIGN KEY (id_projeto) REFERENCES projeto(id_projeto),
+    FOREIGN KEY (id_monitor) REFERENCES monitor(id_monitor)
+);
+
+CREATE TABLE projeto_curso (
+    id_projeto INT,
+    id_curso INT,
+    PRIMARY KEY (id_projeto, id_curso),
+    FOREIGN KEY (id_projeto) REFERENCES projeto(id_projeto),
+    FOREIGN KEY (id_curso) REFERENCES curso(id_curso)
+);
+
+CREATE TABLE curso_disciplina (
+    id_curso INT,
+    id_disciplina INT,
+    PRIMARY KEY (id_curso, id_disciplina),
+    FOREIGN KEY (id_curso) REFERENCES curso(id_curso),
+    FOREIGN KEY (id_disciplina) REFERENCES disciplina(id_disciplina)
+);
+
+CREATE TABLE curso_escola (
+    id_curso INT,
+    id_escola_campus INT,
+    PRIMARY KEY (id_curso, id_escola_campus),
+    FOREIGN KEY (id_curso) REFERENCES curso(id_curso),
+    FOREIGN KEY (id_escola_campus) REFERENCES escola_campus(id_escola_campus)
+);
+
+CREATE TABLE monitor_diario (
+    id_monitor INT,
+    id_diario_bordo INT,
+    PRIMARY KEY (id_monitor, id_diario_bordo),
+    FOREIGN KEY (id_monitor) REFERENCES monitor(id_monitor),
+    FOREIGN KEY (id_diario_bordo) REFERENCES diario_bordo(id_diario_bordo)
+);

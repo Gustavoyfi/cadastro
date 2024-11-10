@@ -1,0 +1,122 @@
+SELECT * FROM escola_campus ORDER BY id_escola_campus DESC;
+
+DELETE FROM escola_campus WHERE id_escola_campus = 2;
+
+SELECT * FROM curso;
+
+
+
+UPDATE escola_campus SET  nome_escola= "Escola não visuais", local_escola= "Londrina -PR", bloco_escola= "2" 
+WHERE id_escola_campus= 2;
+
+
+FUNCTION:
+
+Contar escolas: 
+
+DELIMITER $$	
+CREATE FUNCTION contarEscolas()
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE quantidade INT;
+
+    SELECT COUNT(*) INTO quantidade FROM escola_campus;
+
+    RETURN quantidade;
+END $$
+
+DELIMITER ;
+
+Contar cursos:
+
+DELIMITER $$	
+CREATE FUNCTION contarCursos()
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE quantidade INT;
+
+    SELECT COUNT(*) INTO quantidade FROM curso;
+
+    RETURN quantidade;
+END $$
+
+DELIMITER ;
+
+Contar disciplinas:
+
+DELIMITER $$	
+CREATE FUNCTION contarDisciplinas()
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE quantidade INT;
+
+    SELECT COUNT(*) INTO quantidade FROM disciplina;
+
+    RETURN quantidade;
+END $$
+
+DELIMITER ;
+
+Contar orientadores: 
+
+DELIMITER $$	
+CREATE FUNCTION contarOrientadores ()
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE quantidade INT;
+
+    SELECT COUNT(*) INTO quantidade FROM orientador;
+
+    RETURN quantidade;
+END $$
+DELIMITER ;
+
+Contar projetos: 
+
+DELIMITER $$	
+CREATE FUNCTION contarProjetos ()
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE quantidade INT;
+
+    SELECT COUNT(*) INTO quantidade FROM projeto;
+
+    RETURN quantidade;
+END $$
+DELIMITER ;
+
+Contar Monitores: 
+
+
+DELIMITER $$	
+CREATE FUNCTION contarMonitor ()
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE quantidade INT;
+
+    SELECT COUNT(*) INTO quantidade FROM monitor;
+
+    RETURN quantidade;
+END $$
+DELIMITER ;
+
+Contar Sessões:
+
+DELIMITER $$	
+CREATE FUNCTION contarSessoes ()
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE quantidade INT;
+
+    SELECT COUNT(*) INTO quantidade FROM sessao;
+
+    RETURN quantidade;
+END $$
+DELIMITER ;
