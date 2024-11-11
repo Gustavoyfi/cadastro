@@ -185,11 +185,7 @@ const editStudent = async (id_projeto) => {
             document.querySelector("#edit_horas_voluntario").value = output[i].horas_voluntario;
             document.querySelector("#edit_valor_bolsa").value = output[i].valor_bolsa;
             document.querySelector("#edit_id_disciplina").value = output[i].id_disciplina;
-            document.querySelector("#edit_id_orientador").value = output[i].id_orientador;
             document.querySelector("#edit_id_escola").value = output[i].id_escola_campus;
-            document.querySelector("#edit_id_monitor").value = output[i].id_monitor;
-            document.querySelector("#edit_id_curso").value = output[i].id_curso;
-
 
         }
     }
@@ -211,7 +207,6 @@ update.addEventListener("click", async () => {
     let valor_bolsa = document.querySelector("#edit_valor_bolsa").value;
     let id_disciplina = document.querySelector("#edit_id_disciplina").value;
     let id_escola = document.querySelector("#edit_id_escola").value; 
-    let id_curso = document.querySelector("#edit_id_curso").value;
     
 
     console.log("Valores enviados:", {
@@ -227,7 +222,6 @@ update.addEventListener("click", async () => {
         valor_bolsa,
         id_disciplina,
         id_escola,
-        id_curso
     });
 
 
@@ -249,7 +243,6 @@ update.addEventListener("click", async () => {
             "valor_bolsa": valor_bolsa,
             "id_disciplina": id_disciplina,
             "id_escola": id_escola,
-            "id_curso": id_curso
             
         })
     });
@@ -269,10 +262,7 @@ update.addEventListener("click", async () => {
         document.querySelector("#edit_horas_voluntario").value = "";
         document.querySelector("#edit_valor_bolsa").value = "";
         document.querySelector("#edit_id_disciplina").value = "";
-        document.querySelector("#edit_id_orientador").value = "";
         document.querySelector("#edit_id_escola").value = "";
-        document.querySelector("#edit_id_monitor").value = "";
-        document.querySelector("#edit_id_curso").value = "";
         update_modal.style.display = "none";
         getStudents();
         setTimeout(() => {

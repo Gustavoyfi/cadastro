@@ -23,6 +23,7 @@
 
         <div class="menu">
             <a href="2-home.html">Home</a>
+
             <a href="3-cadastrar_escola.html">Escola</a>
             <a href="4-cadastrar_curso.html">Curso</a>
             <a href="5-cadastrar_disciplina.html">Disciplina</a>
@@ -39,7 +40,7 @@
         <a href="#">Home</a>
     </nav>
 
-    <h2 class="titulo-cadastrar">Seja Bem-vindo Administrador</h2>
+    <h2 class="titulo-cadastrar">Seja Bem-vindo Orientador</h2>
 
     <p>Nesta fase, deve-se apresentar o controle transacional aplicado no projeto.
         Para isso, deve-se identificar pelo menos em uma situação de aplicação de controle transacional no projeto.
@@ -58,7 +59,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h3 class="escolas-title">Cronograma </h3> 
+                <h3 class="escolas-title">Cronograma ( <span id="total"></span> )</h3> 
             </div>
         </div>
     </div>
@@ -68,14 +69,12 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Data</th>
+                        <th>Horário de início</th>
+                        <th>Horário de fim</th>
+                        <th>Local</th>
+                        <th>Id do projeto</th>
                         <th>Monitor</th>
-                        <th>Curso</th>
-                        <th>Disciplina</th>
-                        <th>Id projeto</th>
-                        <th>Status</th>
-                        <th>Horas com bolsa</th>
-                        <th>Valor</th>
-                        <th>Orientador</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -88,6 +87,6 @@
     
 
     
-    <script src="Js/controle_admin.js"></script>
+    <script src="Js/controle_monitor.js"></script>
 </body>
 </html>

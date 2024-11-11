@@ -29,7 +29,7 @@
                  if (is_array($row) && !empty($row)) {
                     
                     $_SESSION['valid'] = $row['email'];
-                    header("Location: 3-cadastrar_escola.html");
+                    header("Location: 0-home_estudante.html");
                     exit(); 
                 } else {
                     echo "<div class='message'>

@@ -120,3 +120,73 @@ BEGIN
     RETURN quantidade;
 END $$
 DELIMITER ;
+
+        
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_inserir_projeto (
+    IN p_id_escola_campus INT,
+    IN p_id_disciplina INT,
+    IN p_id_orientador INT,
+    IN p_data_inicio DATE,
+    IN p_status ENUM('Novo', 'Reduzido'),
+    IN p_forma_atendimento VARCHAR(50),
+    IN p_horas_aula INT,
+    IN p_horas_extraclasse INT,
+    IN p_modalidade VARCHAR(50),
+    IN p_horas_bolsa INT,
+    IN p_horas_voluntario INT,
+    IN p_valor_bolsa DECIMAL(10, 2),
+    IN p_id_monitor INT,
+    IN p_id_curso INT
+)
+BEGIN
+    DECLARE last_id INT;
+    DECLARE v_error_flag BOOLEAN DEFAULT FALSE;
+
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+        SET v_error_flag = TRUE;
+
+    START TRANSACTION;
+
+    INSERT INTO projeto (
+        id_escola_campus, id_disciplina, data_inicio_projeto, status_monitor,
+        forma_atendimento, horas_aula, horas_extraclasse, modalidade,
+        horas_bolsa, horas_voluntario, valor_bolsa
+    ) VALUES (
+        p_id_escola_campus, p_id_disciplina, p_data_inicio, p_status,
+        p_forma_atendimento, p_horas_aula, p_horas_extraclasse, p_modalidade,
+        p_horas_bolsa, p_horas_voluntario, p_valor_bolsa
+    );
+
+    SET last_id = LAST_INSERT_ID();
+    IF last_id = 0 THEN
+        SET v_error_flag = TRUE;
+    END IF;
+
+    IF NOT v_error_flag THEN
+        INSERT INTO orientador_projeto (id_orientador, id_projeto)
+        VALUES (p_id_orientador, last_id);
+    END IF;
+
+    IF NOT v_error_flag AND p_id_monitor IS NOT NULL THEN
+        INSERT INTO projeto_monitor (id_projeto, id_monitor)
+        VALUES (last_id, p_id_monitor);
+    END IF;
+
+    IF NOT v_error_flag AND p_id_curso IS NOT NULL THEN
+        INSERT INTO projeto_curso (id_projeto, id_curso)
+        VALUES (last_id, p_id_curso);
+    END IF;
+
+    IF v_error_flag THEN
+        ROLLBACK;
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro ao inserir projeto';
+    ELSE
+        COMMIT;
+    END IF;
+
+END $$
+
+DELIMITER ;

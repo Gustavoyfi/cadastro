@@ -8,9 +8,11 @@ let save = document.querySelector("#save");
 let success = document.querySelector(".alert-success")
 let error = document.querySelector(".alert-danger")
 
+
 cadastrar.addEventListener("click", () => {
     modal.style.display = "flex";
 });
+
 
 close.addEventListener("click", () => {
     modal.style.display = "none";

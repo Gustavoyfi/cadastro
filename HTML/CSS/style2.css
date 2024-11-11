@@ -70,15 +70,7 @@ header{
     justify-content: center;
 
 }
-.btn i {
-    margin-right: 5px;
-    vertical-align: middle;
-}
 
-.btn {
-    display: flex;
-    align-items: center;
-}
 .btn:hover{
     opacity: 0.82;
 }

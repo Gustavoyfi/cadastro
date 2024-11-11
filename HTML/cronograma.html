@@ -23,6 +23,7 @@
 
         <div class="menu">
             <a href="2-home.html">Home</a>
+
             <a href="3-cadastrar_escola.html">Escola</a>
             <a href="4-cadastrar_curso.html">Curso</a>
             <a href="5-cadastrar_disciplina.html">Disciplina</a>
@@ -36,29 +37,18 @@
     </div>
 
     <nav class="breadcrumb">
-        <a href="#">Home</a>
+        <a href="#">Home</a> &gt; 
+        <a href="#">Cadastrar Escola</a>
     </nav>
 
-    <h2 class="titulo-cadastrar">Seja Bem-vindo Administrador</h2>
+    <h2 class="titulo-cadastrar">Seja Bem-vindo orientador</h2>
 
-    <p>Nesta fase, deve-se apresentar o controle transacional aplicado no projeto.
-        Para isso, deve-se identificar pelo menos em uma situação de aplicação de controle transacional no projeto.
-        Também deve-se preparar uma apresentação acerca do projeto para apresentação pelos alunos em sala de aula.
-        
-        A apresentação através de um VÍDEO deve ser SUSCINTA EM POWERPOINT e deve conter.
-        Os membros devem aparecer no Vídeo, ele deve ser postado no YOUTUBE e não pode ser público.
-        Ele deve conter:
-        - contexto : qual o problema a ser resolvido
-        - modelo físico do projeto de banco de dados
-        - Explicação de partes principais do modelo
-        - Explicação e justificativa para uso de procedures, views, joins, etc
-        - Explicação e justificativa da aplicação do controle transacional.
-        - considerações do grupo</p>
 
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h3 class="escolas-title">Cronograma </h3> 
+                <h3 class="escolas-title">Escolas ( <span id="total"></span> )</h3> 
+                <button class="btn btn-primary" id="cadastrar"><i class="fa-solid fa-plus"></i>Cadastrar</button>
             </div>
         </div>
     </div>
@@ -68,14 +58,12 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Monitor</th>
-                        <th>Curso</th>
-                        <th>Disciplina</th>
-                        <th>Id projeto</th>
-                        <th>Status</th>
-                        <th>Horas com bolsa</th>
-                        <th>Valor</th>
-                        <th>Orientador</th>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Local</th>
+                        <th>Bloco</th>
+                        <th>Alterar</th>
+                        <th>Deletar</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -88,6 +76,6 @@
     
 
     
-    <script src="Js/controle_admin.js"></script>
+    <script src="Js/script.js"></script>
 </body>
 </html>
